@@ -1,0 +1,15 @@
+{
+  "_docs": "RTN News Feed — этот файл читает мод в Minecraft. Добавляй новую запись в начало массива items. Поля: id (уникальный), title, date (ГГГГ-ММ-ДД), category, content, link.",
+  "site": "rtn.garden",
+  "updated": "2026-08-07",
+  "items": [
+    {
+      "id": "2026-08-07-welcome",
+      "title": "Запущен новый сайт RTN Project!",
+      "date": "2026-08-07",
+      "category": "news",
+      "content": "У проекта RTN теперь новый сайт: свежий дизайн, статус сервера онлайн и раздел с новостями, который читает мод прямо в Minecraft.",
+      "link": "https://rtn.garden/news.html#2026-08-07-welcome"
+    }
+  ]
+}

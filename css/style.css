@@ -1,0 +1,817 @@
+/* ============================================================
+   RTN Project — общий стиль сайта
+   Палитра: оранжевый #FF7700, глубокий зелёный #003333
+   Адаптив: десктоп по умолчанию, планшеты ≤900px, телефоны ≤600px
+   ============================================================ */
+
+:root {
+    --orange: #FF7700;
+    --orange-dark: #E05F00;
+    --deep: #003333;
+    --deep-2: #00403f;
+    --deep-3: #0a4a49;
+    --text: #ffffff;
+    --muted: #b8d4d0;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.14);
+    --radius: 14px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --font: 'Segoe UI', 'Manrope', Rubik, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font);
+    background:
+        radial-gradient(1200px 500px at 80% -10%, rgba(255, 119, 0, 0.10), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, rgba(255, 119, 0, 0.07), transparent 60%),
+        var(--deep);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+}
+
+/* ---------- Шапка ---------- */
+.site-header {
+    padding: 1rem 1rem 0;
+}
+
+.header-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+
+.logo-row img {
+    height: 58px;
+    width: auto;
+    border-radius: 12px;
+    border: 2px solid var(--orange);
+    box-shadow: var(--shadow);
+}
+
+.site-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    background: linear-gradient(90deg, #ffffff, var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.site-title span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    -webkit-text-fill-color: var(--muted);
+}
+
+/* ---------- Навигация ---------- */
+.main-nav {
+    max-width: 1060px;
+    margin: 0.8rem auto 1.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 0.45rem;
+    box-shadow: var(--shadow);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.main-nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+.main-nav a {
+    display: inline-block;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+    background: var(--orange);
+    color: var(--deep);
+}
+
+/* ---------- Основной контейнер ---------- */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+}
+
+/* ---------- Карточки ---------- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    margin-bottom: 1.4rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(4px);
+}
+
+.card h1,
+.card h2 {
+    font-size: 1.45rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+    padding-bottom: 0.5rem;
+}
+
+.card p {
+    margin-bottom: 0.9rem;
+    color: #e2efed;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    background: var(--orange);
+    color: var(--deep);
+    padding: 0.75rem 1.1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.98rem;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background: var(--deep-3);
+    color: var(--text);
+    border-color: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(255, 119, 0, 0.25);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--orange);
+}
+
+.btn-ghost:hover {
+    background: var(--orange);
+    color: var(--deep);
+}
+
+.btn-sm {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* ---------- Сетки ---------- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* ---------- Hero (главная) ---------- */
+.hero {
+    text-align: center;
+    padding: 2.2rem 1.6rem 1.8rem;
+    background: linear-gradient(135deg, rgba(255, 119, 0, 0.16), rgba(255, 119, 0, 0.03) 55%, transparent);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    margin-bottom: 1.4rem;
+    box-shadow: var(--shadow);
+}
+
+.hero h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+}
+
+.hero .tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 1.4rem;
+}
+
+.hero .arrow {
+    display: block;
+    font-size: 1.6rem;
+    margin-top: 0.4rem;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- Статус сервера ---------- */
+.server-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 1.4rem;
+}
+
+.status-left {
+    flex: 1;
+    min-width: 230px;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #888;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.dot.online {
+    background: #35d07f;
+    animation: pulse 2s infinite;
+}
+
+.dot.offline {
+    background: #ff5d5d;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(53, 208, 127, 0.5); }
+    70% { box-shadow: 0 0 0 9px rgba(53, 208, 127, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(53, 208, 127, 0); }
+}
+
+.status-ip {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    word-break: break-all;
+}
+
+.status-meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.status-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.status-note {
+    width: 100%;
+    color: var(--muted);
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ---------- Новости ---------- */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.news-item {
+    padding: 1.2rem 1.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.news-item:hover {
+    transform: translateX(5px);
+    border-color: var(--orange);
+}
+
+.news-item h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+}
+
+.news-item .news-date {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.news-item p {
+    margin: 0;
+    color: #dcebe8;
+    font-size: 0.97rem;
+}
+
+.news-more {
+    margin-top: 1.2rem;
+    text-align: center;
+}
+
+/* ---------- Список деревьев (состав) ---------- */
+.tree-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem 1.5rem;
+}
+
+.tree-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+}
+
+.tree-name {
+    font-weight: 700;
+}
+
+.tree-member {
+    color: var(--muted);
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+/* ---------- Плашки-ссылки (соцсети / контакты / правила) ---------- */
+.link-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.link-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s ease;
+}
+
+a.link-row:hover {
+    background: rgba(255, 119, 0, 0.12);
+    border-color: var(--orange);
+    transform: translateX(5px);
+}
+
+.link-icon {
+    font-size: 1.5rem;
+    width: 42px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.link-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.15rem;
+}
+
+.link-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* ---------- IP-карточки ---------- */
+.ip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.ip-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+}
+
+.ip-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.ip-line {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.ip-address {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--orange);
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+    word-break: break-all;
+    font-family: 'Segoe UI', monospace;
+}
+
+/* ---------- Сборки ---------- */
+.builds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.build-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 1.4rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.build-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.build-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.build-card p {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #dcebe8;
+    margin-bottom: 1rem;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--orange);
+    color: var(--deep);
+    margin-bottom: 0.6rem;
+    align-self: flex-start;
+}
+
+.badge-soft {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text);
+}
+
+/* ---------- Шаги гайда ---------- */
+.steps {
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin: 1rem 0;
+}
+
+.step {
+    counter-increment: step;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+}
+
+.step::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--deep);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* ---------- Предупреждение ---------- */
+.warning-note {
+    margin-top: 1.4rem;
+    padding: 1rem;
+    background: rgba(255, 70, 70, 0.12);
+    border: 1px solid rgba(255, 80, 80, 0.35);
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #ffb8b8;
+}
+
+.note {
+    padding: 0.9rem 1.1rem;
+    background: rgba(255, 119, 0, 0.10);
+    border: 1px solid rgba(255, 119, 0, 0.35);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #ffe1c4;
+    margin: 1rem 0;
+}
+
+/* ---------- Код/JSON ---------- */
+pre.code {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #d9f0ec;
+    margin: 1rem 0;
+}
+
+details.schema {
+    margin-top: 1rem;
+    border: 1px dashed var(--card-border);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+details.schema summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+details.schema[open] summary {
+    margin-bottom: 0.8rem;
+}
+
+/* ---------- Пустая заглушка (coming soon) ---------- */
+.soon {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.soon .soon-icon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+}
+
+/* ---------- Футер ---------- */
+.site-footer {
+    border-top: 1px solid var(--card-border);
+    padding: 1.4rem 1rem 1.6rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.footer-links a:hover {
+    color: var(--orange);
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 0.9rem;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-social a:hover {
+    background: var(--orange);
+    color: var(--deep);
+    transform: translateY(-2px);
+}
+
+/* ---------- Адаптив: планшеты ---------- */
+@media (max-width: 900px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tree-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- Адаптив: телефоны ---------- */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+
+    .site-header {
+        padding: 0.8rem 0.6rem 0;
+    }
+
+    .logo-row img {
+        height: 48px;
+    }
+
+    .site-title {
+        font-size: 1.25rem;
+    }
+
+    .site-title span {
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+    }
+
+    .main-nav {
+        margin: 0.6rem auto 1rem;
+        border-radius: 12px;
+        padding: 0.35rem;
+    }
+
+    .main-nav a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.88rem;
+    }
+
+    main {
+        padding: 0 0.6rem 1.4rem;
+    }
+
+    .hero {
+        padding: 1.6rem 1.1rem 1.4rem;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.98rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .card {
+        padding: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .card h1,
+    .card h2 {
+        font-size: 1.25rem;
+    }
+
+    .grid-3,
+    .grid-2,
+    .tree-list {
+        grid-template-columns: 1fr;
+    }
+
+    .status-ip {
+        font-size: 1.25rem;
+    }
+
+    .status-actions {
+        width: 100%;
+    }
+
+    .status-actions .btn {
+        flex: 1;
+    }
+
+    .link-row {
+        padding: 0.85rem 0.9rem;
+    }
+
+    .footer-links {
+        gap: 0.7rem;
+    }
+}
