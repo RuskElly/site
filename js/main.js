@@ -25,6 +25,60 @@
         });
     })();
 
+    /* ---------- Мобильное бургер-меню ---------- */
+    document.querySelectorAll('.main-nav').forEach(function (nav, index) {
+        var list = nav.querySelector('ul');
+        if (!list) return;
+
+        var listId = list.id || 'main-nav-list-' + index;
+        var toggle = document.createElement('button');
+        list.id = listId;
+        toggle.type = 'button';
+        toggle.className = 'nav-toggle';
+        toggle.setAttribute('aria-controls', listId);
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Открыть меню');
+        toggle.innerHTML = '<span>Меню</span><span class="nav-toggle-icon" aria-hidden="true"><span></span></span>';
+        nav.insertBefore(toggle, list);
+        nav.classList.add('nav-enhanced');
+
+        function closeMenu(returnFocus) {
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Открыть меню');
+            if (returnFocus) toggle.focus();
+        }
+
+        toggle.addEventListener('click', function () {
+            var willOpen = !nav.classList.contains('is-open');
+            nav.classList.toggle('is-open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+            toggle.setAttribute('aria-label', willOpen ? 'Закрыть меню' : 'Открыть меню');
+        });
+
+        list.addEventListener('click', function (event) {
+            if (event.target.closest('a')) closeMenu(false);
+        });
+
+        document.addEventListener('click', function (event) {
+            if (nav.classList.contains('is-open') && !nav.contains(event.target)) {
+                closeMenu(false);
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+                closeMenu(true);
+            }
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 600 && nav.classList.contains('is-open')) {
+                closeMenu(false);
+            }
+        });
+    });
+
     /* ---------- Копирование IP ---------- */
     function copyText(text) {
         if (navigator.clipboard && window.isSecureContext) {

@@ -105,6 +105,10 @@ a {
     box-shadow: var(--shadow);
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -754,9 +758,93 @@ details.schema[open] summary {
         padding: 0.35rem;
     }
 
+    .main-nav.nav-enhanced .nav-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        padding: 0.65rem 0.75rem;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .main-nav.nav-enhanced .nav-toggle:hover,
+    .main-nav.nav-enhanced .nav-toggle:focus-visible {
+        background: rgba(255, 255, 255, 0.08);
+        outline: 2px solid var(--orange);
+        outline-offset: -2px;
+    }
+
+    .nav-toggle-icon {
+        position: relative;
+        width: 24px;
+        height: 18px;
+        flex-shrink: 0;
+    }
+
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after,
+    .nav-toggle-icon span {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 24px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--orange);
+        transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+    }
+
+    .nav-toggle-icon::before {
+        top: 1px;
+    }
+
+    .nav-toggle-icon span {
+        top: 8px;
+    }
+
+    .nav-toggle-icon::after {
+        top: 15px;
+    }
+
+    .main-nav.is-open .nav-toggle-icon::before {
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    .main-nav.is-open .nav-toggle-icon span {
+        opacity: 0;
+    }
+
+    .main-nav.is-open .nav-toggle-icon::after {
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    .main-nav.nav-enhanced ul {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.15rem;
+        overflow: visible;
+        padding-top: 0.25rem;
+    }
+
+    .main-nav.nav-enhanced.is-open ul {
+        display: flex;
+    }
+
     .main-nav a {
-        padding: 0.5rem 0.75rem;
+        display: block;
+        padding: 0.6rem 0.75rem;
         font-size: 0.88rem;
+        text-align: left;
     }
 
     main {
