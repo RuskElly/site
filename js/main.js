@@ -25,6 +25,27 @@
         });
     })();
 
+    /* ---------- Бургер-меню (мобильные) ---------- */
+    document.querySelectorAll('.nav-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var nav = btn.parentElement;
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+
+    // Закрываем меню после перехода по ссылке
+    document.querySelectorAll('.main-nav ul a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            var nav = link.closest('.main-nav');
+            if (nav) {
+                nav.classList.remove('open');
+                var btn = nav.querySelector('.nav-toggle');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
     /* ---------- Копирование IP ---------- */
     function copyText(text) {
         if (navigator.clipboard && window.isSecureContext) {

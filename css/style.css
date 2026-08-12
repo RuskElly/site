@@ -105,6 +105,10 @@ a {
     box-shadow: var(--shadow);
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -126,7 +130,7 @@ a {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    padding: 0.55rem 0.9rem;
+    padding: 0.55rem 1rem;
     border-radius: 10px;
     white-space: nowrap;
     transition: background 0.2s ease, color 0.2s ease;
@@ -751,12 +755,89 @@ details.schema[open] summary {
     .main-nav {
         margin: 0.6rem auto 1rem;
         border-radius: 12px;
-        padding: 0.35rem;
+        padding: 0.4rem;
+    }
+
+    /* Бургер-меню на телефоне: вместо горизонтальной прокрутки */
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        color: var(--text);
+        font-family: var(--font);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 0.75rem;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .burger {
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background: var(--orange);
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .burger::before,
+    .burger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height: 2px;
+        background: var(--orange);
+        border-radius: 2px;
+    }
+
+    .burger::before {
+        top: -6px;
+    }
+
+    .burger::after {
+        top: 6px;
+    }
+
+    .main-nav.open .burger::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .main-nav.open .burger::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-top: 0.4rem;
+    }
+
+    .main-nav.open ul {
+        display: flex;
     }
 
     .main-nav a {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.88rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0.75rem;
+        font-size: 1rem;
+    }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+        background: var(--orange);
+        color: var(--deep);
     }
 
     main {

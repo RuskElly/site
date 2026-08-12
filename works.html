@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои моды — RTN Project</title>
-    <meta name="description" content="Моды собственной разработки RTN Project для Minecraft: RTNEcoLib (NeoForge 1.21.1) и другие. Скачать моды.">
+    <meta name="description" content="Моды собственной разработки RTN Project для Minecraft NeoForge 1.21.1: Economy Library, PALM Auth, RLMD, PocketGrove. Скачать с CurseForge.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="RTN Project">
     <meta property="og:title" content="Мои моды — RTN Project">
-    <meta property="og:description" content="Моды собственной разработки RTN Project для Minecraft 1.21.1 и 26.2.">
+    <meta property="og:description" content="Моды собственной разработки RTN Project: экономика, авторизация, случайный лут и личные измерения. NeoForge 1.21.1.">
     <meta property="og:url" content="https://rtn.garden/works.html">
     <meta property="og:image" content="https://rtn.garden/img/og-banner.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -27,14 +27,16 @@
         </div>
 
         <nav class="main-nav" aria-label="Основная навигация">
-            <ul>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" type="button">
+                <span class="burger" aria-hidden="true"></span>
+                <span class="nav-toggle-label">Меню</span>
+            </button>
+            <ul id="nav-list">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О сервере</a></li>
                 <li><a href="builds.html">Сборка</a></li>
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="works.html">Мои моды</a></li>
-                <li><a href="rules.html">Правила</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -42,55 +44,97 @@
     <main>
         <section class="card">
             <h1>⚙️ Мои моды</h1>
-            <p>Моды, которые RTN Project пишет сам для своего сервера и не только.
-                Поддерживаемые версии: <strong>Minecraft 1.21.1</strong> (NeoForge) и <strong>26.2</strong>.</p>
+            <p>Моды, которые RTN Project разрабатывает сам — все доступны на CurseForge.
+                Поддерживаемая версия: <strong>Minecraft 1.21.1</strong> (NeoForge).</p>
 
             <div class="builds-grid">
-                <!-- RTNEcoLib -->
+                <!-- RTN's Economy Library -->
                 <div class="build-card">
                     <span class="badge">NeoForge 1.21.1</span>
-                    <h3>RTNEcoLib</h3>
+                    <h3>RTN's Economy Library</h3>
                     <p>
-                        Библиотека экономики RTN Project:
+                        Мод-библиотека экономики «всё в одном»: аналог Vault и XConomy со Spigot
+                        со встроенной системой Money From Mobs.
                     </p>
-                    <ul style="font-size:0.95rem;color:#dcebe8;margin-bottom:1rem;padding-left:1.2rem">
-                        <li>💵 Балансы и переводы между игроками</li>
-                        <li>⚔️ Награды за убийство мобов</li>
-                        <li>🔥 Комбо-система (цепочки убийств)</li>
-                        <li>🧾 События на изменение баланса</li>
-                        <li>🔒 Шифрованное хранилище данных</li>
-                        <li>🇷🇺/🇬🇧 Локализация: русский и английский</li>
+                    <ul style="font-size:0.92rem;color:#dcebe8;margin-bottom:1rem;padding-left:1.2rem">
+                        <li>⚔️ Деньги за мобов: пассивные 1®, враждебные 5®, боссы 100®</li>
+                        <li>🔥 Комбо-система x1 → x2 → x3</li>
+                        <li>📊 Топы: /baltop, /mfm top, /mfm info</li>
+                        <li>🔒 Шифрованное хранилище AES-256-GCM</li>
+                        <li>🧩 Публичный API для разработчиков (Vault-стиль)</li>
+                        <li>📦 Без зависимостей</li>
                     </ul>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:auto">
-                        <a href="downloads/rtnecolib-1.21.1-1.1.0.jar" class="btn btn-sm" download>⬇ Мод (.jar)</a>
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/rtn-s-economy-library" target="_blank" rel="noopener" class="btn btn-sm">⬇ CurseForge</a>
+                        <a href="downloads/rtnecolib-1.21.1-1.1.0.jar" class="btn btn-ghost btn-sm" download>📦 Наш .jar</a>
                         <a href="downloads/rtnecolib-1.21.1-1.1.0-sources.jar" class="btn btn-ghost btn-sm" download>📂 Исходники</a>
                     </div>
                 </div>
 
-                <!-- Мод для 26.2 — заготовка -->
+                <!-- RTN's PALM Auth -->
                 <div class="build-card">
-                    <span class="badge badge-soft">26.2</span>
-                    <h3>Мод для Minecraft 26.2</h3>
-                    <p>Мод в разработке для новой версии Minecraft 26.2. Информация появится здесь, как только выйдет.</p>
-                    <div class="soon" style="padding:1.2rem 0 0.4rem;text-align:left">
-                        <span class="badge badge-soft">🕒 Скоро</span>
+                    <span class="badge">NeoForge 1.21.1</span>
+                    <h3>RTN's PALM Auth</h3>
+                    <p>
+                        Система авторизации нового поколения: никаких чат-команд —
+                        только красивый GUI в стиле MMORPG.
+                    </p>
+                    <ul style="font-size:0.92rem;color:#dcebe8;margin-bottom:1rem;padding-left:1.2rem">
+                        <li>🚫 Без /login и /register — весь вход через GUI</li>
+                        <li>🖐️ Уникальная капча «Я человек?»</li>
+                        <li>🧍 Экран персонажа: 3D-модель, уровень, XP, баланс</li>
+                        <li>🔐 Автологин по сессионным токенам</li>
+                        <li>💳 Интеграция с RTN's Economy Library</li>
+                    </ul>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:auto">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/rtn-s-palm-auth" target="_blank" rel="noopener" class="btn btn-sm">⬇ CurseForge</a>
                     </div>
                 </div>
 
-                <!-- Место под ещё один мод -->
+                <!-- RLMD -->
                 <div class="build-card">
-                    <span class="badge badge-soft">В разработке</span>
-                    <h3>Ещё один мод RTN?</h3>
-                    <p>Если у тебя появится новый мод — добавлю его карточку сюда. Расскажи название, описание и версию.</p>
-                    <div style="margin-top:auto">
-                        <a href="contacts.html" class="btn btn-ghost btn-sm">💬 Написать</a>
+                    <span class="badge badge-soft">Серверный</span>
+                    <h3>Random Loot Mob Drops (RLMD)</h3>
+                    <p>
+                        Лёгкий серверный мод: при убийстве любого существа есть шанс
+                        выпадения случайного предмета из твоей сборки.
+                    </p>
+                    <ul style="font-size:0.92rem;color:#dcebe8;margin-bottom:1rem;padding-left:1.2rem">
+                        <li>🖥️ Только сервер — клиент ничего не ставит</li>
+                        <li>🏷️ Умная система тегов (c:, neoforge:, create:)</li>
+                        <li>⚙️ Полная настройка: шанс, whitelist, blacklist</li>
+                        <li>🚀 Ноль лагов: лут-пул кэшируется при старте</li>
+                        <li>🎒 Идеально для больших сборок (Create, AE2, TACZ)</li>
+                    </ul>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:auto">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/random-loot-mob-drops-rlmd" target="_blank" rel="noopener" class="btn btn-sm">⬇ CurseForge</a>
+                    </div>
+                </div>
+
+                <!-- PocketGrove -->
+                <div class="build-card">
+                    <span class="badge">NeoForge 1.21.1</span>
+                    <h3>PocketGrove</h3>
+                    <p>
+                        Личные войд-измерения для каждого игрока: свой остров 17×17,
+                        магические деревья, уровни и челленджи.
+                    </p>
+                    <ul style="font-size:0.92rem;color:#dcebe8;margin-bottom:1rem;padding-left:1.2rem">
+                        <li>🏝️ Свой физический мир (ServerLevel) на каждого игрока</li>
+                        <li>🌳 3 Grove-дерева: защита, ресурсы, порталы</li>
+                        <li>📊 Система уровней и 24 челленджа</li>
+                        <li>👥 Роли: OWNER / TRUSTED / GUEST + баны</li>
+                        <li>⚙️ Погода, время, мобы и PvP — настраиваются в GUI</li>
+                    </ul>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:auto">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/pocketgrove" target="_blank" rel="noopener" class="btn btn-sm">⬇ CurseForge</a>
                     </div>
                 </div>
             </div>
 
             <div class="note" style="margin-top:1.4rem">
-                ℹ️ На сервере установлены моды собственной разработки RTN Project —
-                часть возможностей сервера работает только с ними.
+                ℹ️ PALM Auth и PocketGrove используют <strong>RTN's Economy Library</strong> для
+                отображения баланса — ставь его первым. Все моды RTN работают на NeoForge 1.21.1.
             </div>
         </section>
     </main>
