@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<title>Макет: Направления</title>
+<title>Бланки направлений от Борового</title>
 <style>
   :root{
     --bg:#f3f3f3; --card:#fff; --line:#e1e1e1; --text:#1b1b1b; --muted:#6b6b6b;
@@ -70,22 +70,35 @@
   .note{max-width:1020px;margin:14px auto 0;font-size:12px;color:#333}
   .gear{cursor:pointer;color:var(--muted);font-size:15px;margin-left:auto}
   .err{border-bottom:2px solid var(--warn)!important}
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:flex-start;justify-content:center;padding-top:30px;z-index:10}
+  .modal-bg.show{display:flex}
+  .modal{width:760px;max-height:88vh;overflow:auto;background:var(--bg);border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.35);border:1px solid #b9b9b9}
+  .modal .mbody{padding:12px;display:flex;flex-direction:column;gap:10px}
+  .modal .mfoot{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;border-top:1px solid var(--line);background:#fff;position:sticky;bottom:0}
+  .modal textarea{width:100%;border:1px solid #c8c8c8;border-radius:4px;font:inherit;padding:6px 8px;resize:vertical}
+  .modal table{width:100%;border-collapse:collapse;font-size:12px}
+  .modal th{text-align:left;color:var(--muted);font-weight:600;padding:3px 4px;border-bottom:1px solid var(--line)}
+  .modal td{padding:3px 4px;vertical-align:top}
+  .modal td textarea{height:46px}
+  .hdrprev{border:1px dashed #c8c8c8;background:#fff;padding:8px 10px;font:12px "Bahnschrift Light Condensed","Arial Narrow",sans-serif;line-height:1.35}
+  .hdrprev .r{float:right;text-align:right}
+  .hdrprev u{text-decoration:underline}
 </style>
 </head>
 <body>
 <div>
 <div class="win">
-  <div class="titlebar"><span>🩺</span><div class="t">Направления на обследование — ГУЗ «ВГЦП» Филиал №7</div>
+  <div class="titlebar"><span>🩺</span><div class="t"><b>Бланки направлений от Борового</b></div>
     <div class="btns"><span>—</span><span>☐</span><span>✕</span></div></div>
 
   <div class="body">
     <!-- ЛЕВО: пациент -->
     <div class="card">
-      <h3>Пациент <span class="gear" title="Настройки: шапка учреждения, подразделения, кабинеты">⚙</span></h3>
+      <h3>Пациент <span class="gear" title="Настройки: шапка учреждения, подразделения, кабинеты, УЗИ">⚙ Настройки</span></h3>
 
       <label class="f">Подразделение</label>
       <select id="dept">
-        <option>Коптянская АВОП</option><option>Отделение общей практики №1</option><option>ФАП ...</option>
+<optgroup label="Отделения и кабинеты"><option>Отделение общей врачебной практики</option><option>Хирургическое отделение</option><option>Отделение гинекологии</option><option>Отделение профилактики</option><option>Стоматологическое отделение</option><option>Кабинет 100</option></optgroup><optgroup label="АВОП"><option>Бабиничская АВОП</option><option>Вымнянская АВОП</option><option>Должанская АВОП</option><option>Замосточская АВОП</option><option>Запольская АВОП</option><option selected>Коптянская АВОП</option><option>Куринская АВОП</option><option>Мазоловская АВОП</option><option>Суражская АВОП</option><option>Старосельская АВОП</option><option>Октябрьская АВОП</option><option>Шапечинская АВОП</option><option>Яновичская АВОП</option></optgroup><optgroup label="ФАП"><option>Дымановский ФАП</option><option>Зароновский ФАП</option><option>Задубровский ФАП</option><option>Летчанский ФАП</option><option>Островской ФАП</option><option>Пестуницкий ФАП</option><option>Присушинский ФАП</option><option>Полудетковский ФАП</option><option>Слободской ФАП</option><option>Сущевский ФАП</option><option>Тарасенский ФАП</option><option>Шапуровский ФАП</option></optgroup>
       </select>
       <div class="pin">✓ запоминается до следующего запуска</div>
 
@@ -129,7 +142,7 @@
       <div class="sectionlabel">Лабораторные</div>
       <div class="grid" id="lab"></div>
 
-      <div class="sectionlabel">ВИЧ · сифилис · гепатиты <span class="opt">(каждый — отдельный бланк)</span></div>
+      <div class="sectionlabel">ВИЧ · сифилис · гепатиты <span class="opt">(каждый пункт — отдельный бланк; HBs Ag и Anti HCV — один бланк)</span></div>
       <div class="grid" id="inf"></div>
       <div class="row" style="margin-top:6px;max-width:220px">
         <div><label class="f" style="margin-top:0">Код обследования</label><input type="text" value="100" style="width:80px"></div>
@@ -140,7 +153,7 @@
 
       <div class="sub" id="uziBox">
         <table class="uzi">
-          <thead><tr><th style="width:24px"></th><th>Область</th><th>Диагноз на бланке</th><th style="width:96px">Дата</th><th style="width:66px">Время</th><th style="width:96px">Кабинет</th></tr></thead>
+          <thead><tr><th style="width:24px"></th><th>Область</th><th>Диагноз на бланке <span style='font-weight:400'>(стандартный, можно изменить)</span></th><th style="width:96px">Дата</th><th style="width:66px">Время</th><th style="width:96px">Кабинет</th></tr></thead>
           <tbody id="uziRows"></tbody>
         </table>
       </div>
@@ -156,19 +169,92 @@
 </div>
 <div class="note">
   <b>Это интерактивный макет</b> — можно отмечать исследования, менять число копий, раскрывать УЗИ. Внизу слева — живая
-  схема листов: как бланки лягут по 4 на A4. Реальная программа будет выглядеть так же (стиль Windows 11), без браузера.
+  схема листов: как бланки лягут по 4 на A4. Реальная программа будет выглядеть так же (стиль Windows 11), без браузера. Файл программы: «Бланки направлений от Борового.exe».
 </div>
+</div>
+
+<div class="modal-bg" id="settings">
+ <div class="modal">
+  <div class="titlebar"><span>⚙</span><div class="t">Настройки</div><div class="btns"><span id="sx">✕</span></div></div>
+  <div class="mbody">
+   <div class="card">
+    <h3>Шапка бланков <span class="hint">— печатается на всех направлениях</span></h3>
+    <div class="row">
+     <div><label class="f">Учреждение, строка 1</label><input type="text" class="hs" id="h1" value="ГУЗ «ВГЦП» Филиал №7"></div>
+     <div><label class="f">Учреждение, строка 2</label><input type="text" class="hs" id="h2" value="городская поликлиника №7"></div>
+    </div>
+    <div class="row">
+     <div><label class="f">Номер формы (лаб. бланки)</label><input type="text" class="hs" id="h3" value="форма № 210-у"></div>
+     <div><label class="f">Приказ</label><input type="text" class="hs" id="h4" value="Приказ №787 от 28.09.2007"></div>
+    </div>
+    <label class="f">Так будет выглядеть шапка:</label>
+    <div class="hdrprev" id="hprev"></div>
+   </div>
+   <div class="card">
+    <h3>Подразделения <span class="hint">— по одному на строку, порядок как в списке</span></h3>
+    <textarea rows="8">Отделение общей врачебной практики
+Хирургическое отделение
+Отделение гинекологии
+Отделение профилактики
+Стоматологическое отделение
+Кабинет 100
+Бабиничская АВОП
+Вымнянская АВОП
+Должанская АВОП
+Замосточская АВОП
+Запольская АВОП
+Коптянская АВОП
+Куринская АВОП
+Мазоловская АВОП
+Суражская АВОП
+Старосельская АВОП
+Октябрьская АВОП
+Шапечинская АВОП
+Яновичская АВОП
+Дымановский ФАП
+Зароновский ФАП
+Задубровский ФАП
+Летчанский ФАП
+Островской ФАП
+Пестуницкий ФАП
+Присушинский ФАП
+Полудетковский ФАП
+Слободской ФАП
+Сущевский ФАП
+Тарасенский ФАП
+Шапуровский ФАП</textarea>
+   </div>
+   <div class="card">
+    <h3>Кабинеты и коды</h3>
+    <div class="row">
+     <div><label class="f">Кабинеты УЗИ (через запятую)</label><input type="text" value="212, 311"></div>
+     <div><label class="f">Кабинет рентгенографии</label><input type="text" value="109"></div>
+     <div><label class="f">Код обследования (ВИЧ и др.)</label><input type="text" value="100"></div>
+    </div>
+   </div>
+   <div class="card">
+    <h3>УЗИ: области, стандартные диагнозы, подготовка</h3>
+    <table><thead><tr><th style="width:26%">Область</th><th style="width:28%">Диагноз по умолчанию</th><th>Подготовка (печатается внизу бланка)</th></tr></thead>
+     <tbody id="uziSet"></tbody></table>
+   </div>
+  </div>
+  <div class="mfoot"><button class="btn" id="scancel">Отмена</button><button class="btn primary" id="ssave">Сохранить</button></div>
+ </div>
 </div>
 
 <script>
 const LAB=[["oak","ОАК"],["oam","ОАМ"],["bh","Биохимия"],["mno","МНО / коагулограмма"],["psa","ПСА"],
            ["glu","Глюкоза крови"],["hba1c","Гликированный Hb"],["grp","Группа крови и Rh"],["horm","Гормоны (ЩЖ + половые)"]];
-const INF=[["hiv","ИФА ВИЧ"],["rw","ИФА Lues (сифилис)"],["hbs","HBsAg"],["hcv","Anti-HCV"]];
-const INSTR=[["fogk","ФОГК (флюорография)"],["uzi","УЗИ"]];
-const UZI=[["obp","Органы брюшной полости и почки","ОБП+почки"],["omt","Органы малого таза","ОМТ"],
-           ["shz","Щитовидная железа","ЩЖ"],["bca","Брахиоцефальные артерии","БЦА"],["snk","Сосуды нижних конечностей","Сосуды н/к"]];
+const INF=[["hiv","ИФА ВИЧ"],["rw","ИФА Luis"],["hep","HBs Ag + Anti HCV"]];
+const INSTR=[["fogk","Рентгенография ОГК"],["uzi","УЗИ"]];
+const UZI=[
+ ["obp","Органы брюшной полости и почки","ОБП+почки","Гепатомегалия? Спленомегалия?","Натощак: не есть 6–8 часов, утром не пить, не курить. За 2–3 дня исключить газообразующие продукты. При себе иметь амбулаторную карту и пелёнку."],
+ ["omt","Органы малого таза","ОМТ","Миома матки?","С наполненным мочевым пузырём: за 1 час выпить 1–1,5 л негазированной воды и не мочиться. При себе иметь амбулаторную карту и пелёнку."],
+ ["shz","Щитовидная железа","ЩЖ","Гипотиреоз?","Специальной подготовки не требуется. При себе иметь амбулаторную карту."],
+ ["bca","Брахиоцефальные артерии","БЦА","Атеросклероз брахиоцефальных сосудов.","Специальной подготовки не требуется. При себе иметь амбулаторную карту и пелёнку."],
+ ["snk","Сосуды нижних конечностей","Сосуды н/к","Атеросклероз артерий н/к. ВБНК?","Специальной подготовки не требуется. При себе иметь амбулаторную карту и пелёнку."]];
 const SHORT={oak:"ОАК",oam:"ОАМ",bh:"БХ",mno:"МНО",psa:"ПСА",glu:"Глюк",hba1c:"HbA1c",grp:"Гр.кр",horm:"Горм",
-             hiv:"ВИЧ",rw:"RW",hbs:"HBs",hcv:"HCV",fogk:"ФОГК"};
+             hiv:"ВИЧ",rw:"Luis",hep:"HBs+HCV",fogk:"Rg ОГК"};
 const state={}; const uzi={};
 
 function makeItems(arr, el){
@@ -195,17 +281,16 @@ makeItems(INSTR,document.getElementById('instr'));
 
 const tb=document.getElementById('uziRows');
 const today=new Date(2026,9,14);
-UZI.forEach(([id,name])=>{
+UZI.forEach(([id,name,,stdDiag])=>{
   uzi[id]={on:false};
   const tr=document.createElement('tr'); tr.className='off';
   tr.innerHTML=`<td><input type="checkbox"></td><td>${name}</td>
-    <td><input type="text" class="d" placeholder="как основной"></td>
+    <td><input type="text" class="d" value="${stdDiag}"></td>
     <td><input type="text" placeholder="ДД.ММ.ГГГГ"></td>
     <td><input type="text" placeholder="ЧЧ:ММ"></td>
     <td><div class="mini"><button class="on">212</button><button>311</button></div></td>`;
   tr.querySelector('input[type=checkbox]').addEventListener('change',e=>{
     uzi[id].on=e.target.checked; tr.classList.toggle('off',!e.target.checked);
-    const dd=tr.querySelector('.d'); if(e.target.checked && !dd.value) dd.value=document.getElementById('diag').value;
     render();});
   tr.querySelectorAll('.mini button').forEach(b=>b.addEventListener('click',()=>{
     tr.querySelectorAll('.mini button').forEach(x=>x.classList.remove('on')); b.classList.add('on');}));
@@ -258,11 +343,22 @@ document.getElementById('clear').addEventListener('click',()=>{
   age(); render();
 });
 document.getElementById('create').addEventListener('click',()=>alert('Здесь программа создаст документ Word и откроет его.'));
+// настройки
+const st=document.getElementById('settings');
+document.querySelector('.gear').addEventListener('click',()=>st.classList.add('show'));
+['sx','scancel','ssave'].forEach(id=>document.getElementById(id).addEventListener('click',()=>st.classList.remove('show')));
+const us=document.getElementById('uziSet');
+UZI.forEach(([,name,,d,prep])=>{const tr=document.createElement('tr');
+  tr.innerHTML=`<td>${name}</td><td><textarea>${d}</textarea></td><td><textarea>${prep}</textarea></td>`; us.appendChild(tr);});
+function hp(){const v=id=>document.getElementById(id).value;
+  document.getElementById('hprev').innerHTML=`<span class="r">${v('h3')}<br>${v('h4')}</span><u>${v('h1')}</u><br><u>${v('h2')}</u><br>
+  <span style="font-size:9px;color:#555">(наименование организации здравоохранения)</span><br>«____» ______________ 2026 г.<span style="float:right">${document.getElementById('dept').value}</span>`;}
+document.querySelectorAll('.hs').forEach(i=>i.addEventListener('input',hp)); document.getElementById('dept').addEventListener('change',hp); hp();
 // стартовый пример
 ['oak','bh','hiv','rw','fogk'].forEach(id=>document.querySelector(`.item[data-id=${id}]`).click());
 document.querySelector('.item[data-id=uzi]').click();
 [0,3].forEach(i=>{const c=tb.querySelectorAll('input[type=checkbox]')[i]; c.checked=true; c.dispatchEvent(new Event('change'));});
 age(); render();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4a834543a1fc603',t:'MTc5MTk5Nzg5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
